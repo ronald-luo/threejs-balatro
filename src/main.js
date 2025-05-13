@@ -89,7 +89,7 @@ void main() {
 }`;
 
 // Audio setup
-const audio = new Audio("balatro-music.mp3");
+const audio = new Audio("/threejs-balatro/balatro-music.mp3");
 audio.loop = true;
 audio.volume = 0.7; // Set to 70% volume
 
@@ -188,17 +188,42 @@ const configureTexture = (texture) => {
   return texture;
 };
 
+// Error handler for texture loading
+const onTextureError = (err) => {
+  console.error("Error loading texture:", err);
+};
+
 const frontTexture = configureTexture(
-  textureLoader.load("src/textures/ace-of-spades.jpg")
+  textureLoader.load(
+    "/threejs-balatro/src/textures/ace_of_spades.jpg",
+    undefined,
+    undefined,
+    onTextureError
+  )
 );
 const backTexture = configureTexture(
-  textureLoader.load("src/textures/card_back.svg")
+  textureLoader.load(
+    "/threejs-balatro/src/textures/card_back.svg",
+    undefined,
+    undefined,
+    onTextureError
+  )
 );
 const normalMap = configureTexture(
-  textureLoader.load("src/textures/card_normal.svg")
+  textureLoader.load(
+    "/threejs-balatro/src/textures/card_normal.svg",
+    undefined,
+    undefined,
+    onTextureError
+  )
 );
 const alphaMap = configureTexture(
-  textureLoader.load("src/textures/card_mask.svg")
+  textureLoader.load(
+    "/threejs-balatro/src/textures/card_mask.svg",
+    undefined,
+    undefined,
+    onTextureError
+  )
 );
 
 // Create floating card with correct aspect ratio (736:1036 ≈ 0.71)
@@ -314,14 +339,21 @@ window.addEventListener("mousemove", (event) => {
 
 // Handle click to play audio
 let isPlaying = false;
-window.addEventListener("click", () => {
+window.addEventListener("click", async () => {
   if (!isPlaying) {
-    // Resume audio context if suspended
-    if (audioContext.state === "suspended") {
-      audioContext.resume();
+    try {
+      // Resume audio context if suspended
+      if (audioContext.state === "suspended") {
+        await audioContext.resume();
+      }
+      // Try to play the audio
+      await audio.play();
+      isPlaying = true;
+      musicStatus.textContent = "MUSIC: PLAYING";
+    } catch (error) {
+      console.error("Audio playback failed:", error);
+      musicStatus.textContent = "MUSIC: FAILED TO PLAY";
     }
-    audio.play();
-    isPlaying = true;
   }
 });
 
