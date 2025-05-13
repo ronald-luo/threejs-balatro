@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="736" height="1036" viewBox="0 0 736 1036" xmlns="http://www.w3.org/2000/svg">
+    <!-- Main card shape with pixel-perfect corners -->
+    <path d="
+        M 40,0
+        L 696,0
+        L 736,40
+        L 736,996
+        L 696,1036
+        L 40,1036
+        L 0,996
+        L 0,40
+        Z" 
+        fill="white"/>
+</svg> 

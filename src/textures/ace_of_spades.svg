@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="700" viewBox="0 0 500 700" xmlns="http://www.w3.org/2000/svg">
+    <!-- Card background with rounded corners -->
+    <rect x="10" y="10" width="480" height="680" fill="white" stroke="black" stroke-width="4" rx="20" ry="20"/>
+    
+    <!-- Corner numbers/symbols -->
+    <text x="40" y="80" font-family="Arial" font-size="60" font-weight="bold">A</text>
+    <text x="460" y="680" font-family="Arial" font-size="60" font-weight="bold" transform="rotate(180 460 680)">A</text>
+    
+    <!-- Large spade symbol -->
+    <path d="M250 200 L350 360 Q370 400 350 440 L350 440 Q330 480 290 480 Q250 480 250 440 Q250 480 210 480 Q170 480 150 440 Q130 400 150 360 Z" 
+          fill="black"/>
+    <path d="M250 440 L250 560" stroke="black" stroke-width="30"/>
+    
+    <!-- Corner spade symbols -->
+    <path d="M40 100 L60 140 Q64 150 60 160 L60 160 Q56 170 46 170 Q36 170 36 160 Q36 170 26 170 Q16 170 12 160 Q8 150 12 140 Z" 
+          fill="black"/>
+    <path d="M460 600 L480 640 Q484 650 480 660 L480 660 Q476 670 466 670 Q456 670 456 660 Q456 670 446 670 Q436 670 432 660 Q428 650 432 640 Z" 
+          fill="black" transform="rotate(180 460 600)"/>
+</svg> 

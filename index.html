@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Balatro Card Art</title>
+    <link rel="stylesheet" href="src/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hud">
+      <div class="hud-section">
+        <div class="volume-control">
+          <span>VOLUME</span>
+          <input
+            type="range"
+            class="volume-slider"
+            min="0"
+            max="100"
+            value="70"
+          />
+        </div>
+        <button class="pixel-button" id="hideHud">HIDE HUD</button>
+      </div>
+      <div class="hud-section game-info">
+        Balatro is a roguelike deckbuilding game with a poker twist.
+        <div class="game-links">
+          <a
+            href="https://store.steampowered.com/app/2379780/Balatro/"
+            target="_blank"
+            >Get the full game</a
+          >
+          •
+          <a
+            href="https://github.com/ronald-luo/threejs-balatro"
+            target="_blank"
+            >View live demo</a
+          >
+        </div>
+      </div>
+      <div class="hud-section">
+        <span>MUSIC: CLICK TO PLAY</span>
+      </div>
+    </div>
+    <button class="toggle-hud">SHOW HUD</button>
+
+    <div class="modal-overlay">
+      <div class="modal">
+        <button class="modal-close">×</button>
+        <div class="modal-header">ABOUT THIS DEMO</div>
+        <div class="modal-content">
+          <div class="section-title">OVERVIEW</div>
+          This interactive demo recreates the mesmerizing background effects and
+          card animations from Balatro using Three.js and custom GLSL shaders.
+          Click anywhere to play the music and move your mouse to experience
+          parallax effects.
+
+          <div class="section-title">TECHNICAL DETAILS</div>
+          <div class="tech-list">
+            <div class="tech-tag">Three.js</div>
+            <div class="tech-tag">GLSL Shaders</div>
+            <div class="tech-tag">WebGL</div>
+            <div class="tech-tag">Web Audio API</div>
+            <div class="tech-tag">Particle Systems</div>
+          </div>
+
+          <div class="section-title">FEATURES</div>
+          • Custom fluid shader background<br />
+          • Audio-reactive animations<br />
+          • Dynamic lighting and normal mapping<br />
+          • Particle effects on card corners<br />
+          • Mouse-controlled camera parallax<br />
+          • Pixel-perfect card design
+
+          <div class="credits">
+            Original game "Balatro" by LocalThunk<br />
+            Demo recreation for educational purposes
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
