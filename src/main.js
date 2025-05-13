@@ -89,9 +89,38 @@ void main() {
 }`;
 
 // Audio setup
-const audio = new Audio("/threejs-balatro/balatro-music.mp3");
+const audio = new Audio("/threejs-balatro/assets/balatro-music.mp3");
 audio.loop = true;
 audio.volume = 0.7; // Set to 70% volume
+
+// Add error handling for audio
+audio.addEventListener("error", (e) => {
+  console.error("Error loading audio:", e);
+  musicStatus.textContent = "MUSIC: ERROR LOADING";
+});
+
+// Add loading status
+audio.addEventListener("canplaythrough", () => {
+  musicStatus.textContent = "MUSIC: READY (CLICK TO PLAY)";
+});
+
+// Add play status
+audio.addEventListener("playing", () => {
+  musicStatus.textContent = "MUSIC: PLAYING";
+});
+
+// Initialize audio context on first user interaction
+document.addEventListener(
+  "click",
+  function initAudio() {
+    if (audioContext.state === "suspended") {
+      audioContext.resume();
+    }
+    audio.play().catch((e) => console.error("Error playing audio:", e));
+    document.removeEventListener("click", initAudio);
+  },
+  { once: true }
+);
 
 // Create audio context and analyzer
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -195,7 +224,7 @@ const onTextureError = (err) => {
 
 const frontTexture = configureTexture(
   textureLoader.load(
-    "/threejs-balatro/src/textures/ace_of_spades.jpg",
+    "/threejs-balatro/assets/textures/ace_of_spades.jpg",
     undefined,
     undefined,
     onTextureError
@@ -203,7 +232,7 @@ const frontTexture = configureTexture(
 );
 const backTexture = configureTexture(
   textureLoader.load(
-    "/threejs-balatro/src/textures/card_back.svg",
+    "/threejs-balatro/assets/textures/card_back.svg",
     undefined,
     undefined,
     onTextureError
@@ -211,7 +240,7 @@ const backTexture = configureTexture(
 );
 const normalMap = configureTexture(
   textureLoader.load(
-    "/threejs-balatro/src/textures/card_normal.svg",
+    "/threejs-balatro/assets/textures/card_normal.svg",
     undefined,
     undefined,
     onTextureError
@@ -219,7 +248,7 @@ const normalMap = configureTexture(
 );
 const alphaMap = configureTexture(
   textureLoader.load(
-    "/threejs-balatro/src/textures/card_mask.svg",
+    "/threejs-balatro/assets/textures/card_mask.svg",
     undefined,
     undefined,
     onTextureError
